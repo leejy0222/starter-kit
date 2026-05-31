@@ -16,7 +16,6 @@ const log = {
   step: (msg) => console.log(`\n${colors.blue}➜${colors.reset}  ${colors.bright}${msg}${colors.reset}`),
   success: (msg) => console.log(`${colors.green}✓${colors.reset}  ${msg}`),
   warning: (msg) => console.log(`${colors.yellow}⚠${colors.reset}  ${msg}`),
-  error: (msg) => console.log(`${colors.red}✗${colors.reset}  ${msg}`),
 };
 
 async function main() {
@@ -27,19 +26,22 @@ ${colors.bright}${colors.blue}╰───────────────�
   `);
 
   try {
+    const projectRoot = path.join(__dirname, '../..');
+
     log.step('데이터베이스 삭제 및 마이그레이션 재실행 중...');
     execSync('cd apps/backend && pnpm exec prisma migrate reset --force', {
-      cwd: path.join(__dirname, '..'),
+      cwd: projectRoot,
       stdio: 'inherit',
       shell: true
     });
     log.success('데이터베이스 리셋 완료');
 
     log.step('더미 데이터 생성 중...');
-    // 더미 데이터 생성
-    const seedPath = path.join(__dirname, '../scripts/db-seed.js');
     try {
-      execSync(`node ${seedPath}`, { stdio: 'inherit' });
+      execSync(`node .claude/commands/db-seed`, {
+        cwd: projectRoot,
+        stdio: 'inherit'
+      });
       log.success('더미 데이터 생성 완료');
     } catch (error) {
       log.warning('더미 데이터 생성 스킵');
@@ -58,8 +60,7 @@ ${colors.bright}${colors.green}✓ 데이터베이스 리셋 완료!${colors.res
   `);
 
   } catch (error) {
-    log.error('데이터베이스 리셋 실패');
-    console.error(error.message);
+    log.warning('데이터베이스 리셋 실패');
     process.exit(1);
   }
 }
