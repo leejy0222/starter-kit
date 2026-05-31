@@ -1,0 +1,22 @@
+{
+  "name": "rpa-web-platform",
+  "version": "0.1.0",
+  "description": "RPA 및 자동화 툴 웹 통합환경",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@8.0.0",
+  "workspaces": [
+    "apps/frontend",
+    "apps/backend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r --parallel run build",
+    "lint": "pnpm -r --parallel run lint",
+    "type-check": "pnpm -r --parallel run type-check"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
