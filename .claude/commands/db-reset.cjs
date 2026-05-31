@@ -38,7 +38,7 @@ ${colors.bright}${colors.blue}╰───────────────�
 
     log.step('더미 데이터 생성 중...');
     try {
-      execSync(`node .claude/commands/db-seed`, {
+      execSync(`node .claude/commands/db-seed.cjs`, {
         cwd: projectRoot,
         stdio: 'inherit'
       });
