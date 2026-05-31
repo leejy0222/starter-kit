@@ -14,7 +14,11 @@
     "dev": "pnpm -r --parallel run dev",
     "build": "pnpm -r --parallel run build",
     "lint": "pnpm -r --parallel run lint",
-    "type-check": "pnpm -r --parallel run type-check"
+    "type-check": "pnpm -r --parallel run type-check",
+    "setup": "node scripts/setup.js",
+    "create": "node scripts/create.js",
+    "db:reset": "node scripts/db-reset.js",
+    "db:seed": "node scripts/db-seed.js"
   },
   "devDependencies": {
     "typescript": "^5.3.0"
