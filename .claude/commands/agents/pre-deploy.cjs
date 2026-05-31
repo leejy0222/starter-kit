@@ -35,7 +35,7 @@ function runStep(label, command, cwd) {
     execSync(command, {
       stdio: 'inherit',
       shell: true,
-      cwd: cwd || path.join(__dirname, '../..'),
+      cwd: cwd || path.join(__dirname, '../../..'),
     });
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
     log.success(`${label} (${elapsed}s)`);
@@ -50,7 +50,7 @@ function runStep(label, command, cwd) {
 }
 
 async function main() {
-  const projectRoot = path.join(__dirname, '../..');
+  const projectRoot = path.join(__dirname, '../../..');
 
   console.log(`
 ${colors.bright}${colors.blue}╭──────────────────────────────────────────╮${colors.reset}

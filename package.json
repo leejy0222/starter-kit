@@ -17,7 +17,7 @@
     "type-check": "pnpm -r --parallel run type-check",
     "test": "pnpm -r --parallel run test",
     "test:unit": "pnpm -r run test",
-    "test:pre-deploy": "node .claude/commands/pre-deploy.cjs",
+    "test:pre-deploy": "node .claude/commands/agents/pre-deploy.cjs",
     "setup": "node .claude/commands/setup.cjs",
     "create": "node .claude/commands/create.cjs",
     "db:reset": "node .claude/commands/db-reset.cjs",
