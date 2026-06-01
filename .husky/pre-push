@@ -9,16 +9,5 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-pnpm run type-check
-if [ $? -ne 0 ]; then
-  echo "\033[31m✗\033[0m  Type Check 실패"
-  exit 1
-fi
-
-pnpm run test:unit
-if [ $? -ne 0 ]; then
-  echo "\033[31m✗\033[0m  단위 테스트 실패"
-  exit 1
-fi
-
-echo "\n\033[32m✓\033[0m  모든 테스트 통과. Push를 계속합니다.\n"
+echo "\n\033[32m✓\033[0m  Lint 통과. Push를 계속합니다.\n"
+echo "\n\033[33m⚠\033[0m  Type Check와 테스트는 \`pnpm test:pre-deploy\`에서 실행됩니다.\n"
