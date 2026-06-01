@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -Command \"Write-Host -ForegroundColor Cyan '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'; Write-Host -ForegroundColor Green '✅ 서브에이전트 작업 완료!' -BackgroundColor Black; Write-Host -ForegroundColor Cyan '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'; [Console]::Beep(1200, 200); Start-Sleep -Milliseconds 100; [Console]::Beep(1200, 200); Start-Sleep -Milliseconds 100; [Console]::Beep(1200, 200); Start-Sleep -Milliseconds 100; [Console]::Beep(1200, 200)\"",
+            "statusMessage": "서브에이전트 알림 전송 중...",
+            "asyncRewake": true,
+            "rewakeSummary": "서브에이전트 작업 완료!"
+          }
+        ]
+      }
+    ]
+  }
+}
